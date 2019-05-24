@@ -53,7 +53,12 @@ class Client::RecipesController < ApplicationController
                           "http://localhost:3000/api/recipes/#{params[:id]}",
                           form: client_params
                           )
-    
+
     redirect_to "/client/recipes/#{params[:id]}"
+  end
+
+  def destroy
+    response = HTTP.delete("http://localhost:3000/api/recipes/#{params[:id]}")
+    redirect_to "/client/recipes"
   end
 end
